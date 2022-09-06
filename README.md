@@ -18,7 +18,7 @@ It is a test reporting tool.
 
 - First you will need to install it on your machine. You can do this by using *scoop*. To install *scoop* follow the quickstart instructions on this link.
 - To install *allure* open up Powershell and run `scoop install allure`
-- After all the tests has been run it will generate report files in a folder that is specified in the *allureConfig.json* file.
+- After all the tests have been run it will generate report files in a folder that is specified in the *allureConfig.json* file.
 - Open up the *cmd*, navigate to that folder parent.(E.g If path in *allureConfig.json*  is "C:\\Users\\milan.maksimovic\\Desktop\\Zadatak\\Results"), go to Zadatak folder.
 - Run `allure generate "Results" --clean`. This will generate the *allure-report* folder.
 - Now run `allure open "allure-project"` and the test report should open up in your browser.
