@@ -21,4 +21,10 @@
     <ProjectReference Include="..\BackendTestCommon\BackendTestCommon.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="allureConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
