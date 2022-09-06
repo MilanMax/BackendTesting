@@ -1,0 +1,86 @@
+BUG 1:
+Title:
+User with less then minimum characters in user name is able to register
+
+Description:
+User name rule is that it needs to be between 6 and 50 characters long.
+User with 5 characters long is able to register.
+
+Severity: High
+Priority: High
+
+Api steps to reproduce:
+
+1. Create new user model with the following data:
+ 	_password = "Test123!"
+ 	_firstName = "Tester"
+ 	_lastName = "Testovic"
+ 	_username5Char = "TestM"
+
+2.Serialize user model using JsonSerializer, content type: application/json
+3.Send it as body in PUT request. Endpoint: "/users/register"
+
+Actual result: Response status code 201 Created
+Expected result: Response status code 400 Bad Request
+
+
+
+
+BUG 2:
+Title:
+User with maximum characters in user name is not able to register.
+
+Description:
+User name rule is that it needs to be between 6 and 50 characters long.
+User with 50 characters long is not able to register.
+
+Severity: High
+Priority: High
+
+Api steps to reproduce:
+1. Create new user model with the following data:
+	_password = "Test123!"
+ 	_firstName = "Tester"
+ 	_lastName = "Testovic"
+ 	_username50Char = "Clarislarorumclassclaudicareclitacoercendicucored"
+
+2.Serialize user model using JsonSerializer, content type: application/json
+3.Send it as body in PUT request.Endpoint: "/users/register"
+
+Actual result:  Response status code 400 Bad Request
+Expected result: Response status code 201 Created
+
+
+
+
+
+BUG 3:
+Title:
+User with not strong enough password is able to register
+
+Description:
+Password rule: it needs to contain mixture of uppercase and lowercase letters, numbers and special characters.
+User with simple password e.g. "test" able to register. Even with an empty string as a password.
+
+Severity: High
+Priority: High
+
+Api steps to reproduce:
+1. Create new user model with the following data:
+	 _password = "test"
+ 	_firstName = "Tester"
+ 	_lastName = "Testovic"
+ 	_username = "TestMilan"
+
+OR
+
+ 	_password = ""
+ 	_firstName = "Tester"
+ 	_lastName = "Testovic"
+ 	_username = "TestMilan"
+
+2.Serialize user model using JsonSerializer, content type: application/json
+3.Send it as body in PUT request. Endpoint: "/users/register"
+
+Actual result: Response status code 201 Created
+Expected result: Response status code 400 Bad Request
